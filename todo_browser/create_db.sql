@@ -1,0 +1,15 @@
+CREATE SCHEMA IF NOT EXISTS todo_browser;
+
+USE todo_browser;
+
+CREATE TABLE IF NOT EXISTS lists (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+  );
+CREATE TABLE IF NOT EXISTS items (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  creation_date TIMESTAMP NOT NULL,
+  content VARCHAR(1023),
+  list_id INT,
+  FOREIGN KEY (list_id) REFERENCES lists(id)
+  );
