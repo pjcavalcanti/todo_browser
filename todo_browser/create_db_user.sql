@@ -1,4 +1,4 @@
-CREATE USER 'todo@browser' IDENTIFIED BY 'todo_browser_server';
+CREATE USER 'todo@browser' IDENTIFIED BY 'todo';
 GRANT ALL PRIVILEGES ON todo_browser.* TO 'todo@browser';
 
 FLUSH PRIVILEGES;
