@@ -105,6 +105,12 @@ ul {
 .checkbox {
   margin: 0.1rem;
   margin-right: 0.5rem;
+  background-color: var(--color-secondary);
+  fill: white;
+}
+
+.bi-square {
+  fill:white;
 }
 
 .bi-check-lg {
@@ -123,7 +129,7 @@ ul {
   align-items: center;
 }
 
-.item-icons button {
+button {
   background-color: var(--color-secondary);
   border: none;
   padding: 0.4rem;
