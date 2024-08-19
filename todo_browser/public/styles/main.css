@@ -4,6 +4,7 @@
   --color-400: rgb(127, 121, 121);
   --color-200: rgb(193, 189, 179);
   --color-secondary: rgb(95, 91, 107);
+  --color-red-alert: rgb(235, 85, 65);
 
   color: white;
 }
@@ -24,10 +25,17 @@ section {
   padding-bottom: 0.5rem;
 }
 
+.scrollable {
+  max-height: 100%;
+  overflow-y: auto;
+  margin-bottom: 0.4rem;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
 
 .list {
@@ -89,40 +97,44 @@ ul {
   
   margin-top: 0.2rem;
   padding-left: 0.4rem;
+
 }
 
 .item div {
   display: flex;
-  align-items: center;
-  align-content: center;
 }
 
 .item-info {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .checkbox {
   margin: 0.1rem;
-  margin-right: 0.5rem;
   background-color: var(--color-secondary);
   fill: white;
 }
 
-.bi-square {
-  fill:white;
-}
-
-.bi-check-lg {
-  width: fit-content;
-  fill: greenyellow;
-  height: 1.1rem;
-  width: 1.1rem;
-}
-
 .item-label {
+  background-color: var(--color-400);
+  width: 100%;
+  height: auto;
+  color: white;
   font-size: 1.1rem;
+  border-radius: 0.3rem;
+  border-style: none;
+  margin-bottom: 0.2rem;
+  margin-right: 0.4rem;
+  resize: none;
 }
+
+.item-label:disabled {
+  background-color: var(--color-secondary);
+  border: none;
+  color: white;
+}
+
 
 .item-icons {
   display: flex;
@@ -136,8 +148,14 @@ button {
   display: flex;
 }
 
-.bi-trash-fill, .bi-pencil-square {
+.bi-square, .bi-trash-fill, .bi-pencil-square, .bi-save {
   fill: white;
+  height: 1.1rem;
+  width: 1.1rem;
+}
+
+.bi-check-lg {
+  fill: greenyellow;
   height: 1.1rem;
   width: 1.1rem;
 }
@@ -164,3 +182,14 @@ button {
   border-color: var(--color-400);
 }
 
+.non-clickable {
+  pointer-events: none;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+.hidden {
+  display: none;
+}

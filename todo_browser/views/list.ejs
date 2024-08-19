@@ -1,9 +1,9 @@
 <section class="list border-against-body" id=<%= css_id %> >
-  <div>
-    <h1><%= title %></h1>
+  <h1><%= title %></h1>
+  <div class="scrollable">
     <ul>
       <% for (let i = 0; i < 10; i++) { %>
-        <%- include('list-item.ejs'); %>
+        <%- include('list-item.ejs', {i: i}); %>
       <% } %>
     </ul>
   </div>
