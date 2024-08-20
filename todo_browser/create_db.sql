@@ -4,12 +4,13 @@ USE todo_browser;
 
 CREATE TABLE IF NOT EXISTS lists (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(255) NOT NULL
+  name VARCHAR(255) NOT NULL,
+  done BOOLeAN NOT NULL
   );
 CREATE TABLE IF NOT EXISTS items (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  creation_date TIMESTAMP NOT NULL,
-  content VARCHAR(1023),
+  description VARCHAR(1023),
+  done BOOLeAN NOT NULL,
   list_id INT,
   FOREIGN KEY (list_id) REFERENCES lists(id)
   );

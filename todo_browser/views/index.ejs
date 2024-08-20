@@ -3,11 +3,13 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/main.css" defer>
     <script src="/scripts/behavior.js" defer></script>
   </head>
   <body>
-    <%- include('list.ejs', {title: "Lists", css_id: "list-of-lists"}); %>
-    <%- include('list.ejs', {title: "Some List", css_id: "todo-list"}); %>
+    <%- include('list.ejs', {title: "Lists", css_id: "list-of-lists", list_data: lists, list_or_task: "list", chosen_list: chosen_list}); %>
+    <%- include('list.ejs', {title: title, css_id: "todo-list", list_data: tasks, list_or_task: "task", chosen_list: chosen_list}); %>
+    <footer>
+    </footer>
   </body>
 </html>

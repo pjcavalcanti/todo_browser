@@ -64,6 +64,12 @@ ul {
   justify-items: center;
 }
 
+.new:hover {
+  border-style: outset;
+  border-radius: 0.5rem;
+  border-width: 1px;
+}
+
 .new button {
   display: block;
   width: 100%;
@@ -72,12 +78,7 @@ ul {
   margin-bottom: 0;
   background-color: var(--color-secondary);
   border: none;
-}
-
-.new button:hover {
-  border-style: outset;
-  border-radius: 0.5rem;
-  border-width: 1px;
+  pointer-events: none;
 }
 
 .bi-plus-lg {
@@ -133,6 +134,7 @@ ul {
   background-color: var(--color-secondary);
   border: none;
   color: white;
+  pointer-events: none;
 }
 
 

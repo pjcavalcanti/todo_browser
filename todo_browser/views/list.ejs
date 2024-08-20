@@ -1,13 +1,15 @@
 <section class="list border-against-body" id=<%= css_id %> >
-  <h1><%= title %></h1>
-  <div class="scrollable">
-    <ul>
-      <% for (let i = 0; i < 10; i++) { %>
-        <%- include('list-item.ejs', {i: i}); %>
-      <% } %>
-    </ul>
+  <div>
+    <h1><%= title %></h1>
+    <div class="scrollable">
+      <ul>
+        <% for (let item_data of list_data) { %>
+          <%- include('list-item.ejs', {list_id: item_data.list_id, task_id: item_data.task_id, label: item_data.label, done: item_data.done, list_or_task: list_or_task}); %>
+        <% } %>
+      </ul>
+    </div>
   </div>
-  <div class="new">
+  <div class="new" type="<%= list_or_task %>" chosen-list="<%= chosen_list %>">
     <button>
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
