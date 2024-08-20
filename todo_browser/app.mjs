@@ -18,6 +18,27 @@ app.get("/", function(request, response){
   response.redirect("/-1");
 })
 
+app.get("/set-label/:list_id/:new_label", function(request, response) {
+  const list_id = request.params.list_id;
+  const new_label = request.params.new_label;
+  const query = `UPDATE lists SET name='${new_label}' WHERE id=${list_id}`;
+  console.log(query);
+  db.query(query, function(e, r, f) {
+    response.redirect(`/${list_id}`);
+  });
+});
+
+app.get("/set-label/:list_id/:task_id/:new_label", function(request, response) {
+  const list_id = request.params.list_id;
+  const task_id = request.params.task_id;
+  const new_label = request.params.new_label;
+  const query = `UPDATE items SET description='${new_label}' WHERE list_id=${list_id} AND id=${task_id}`;
+  console.log(query);
+  db.query(query, function(e, r, f) {
+    response.redirect(`/${list_id}`);
+  });
+});
+
 app.get("/delete-list/:target/:current_list", function(request, response) {
   const current_list = request.params.current_list;
   const target = request.params.target;

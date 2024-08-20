@@ -12,6 +12,7 @@ for (const checkbox of checkboxes) {
   const done = checkbox.parentElement.parentElement.getAttribute('done');
   const mark = checkbox.querySelector(".bi-check-lg");
 
+  // Properly set checkbox status
   if (done == 1) {
     mark.classList.remove("invisible");
   } else {
@@ -24,7 +25,8 @@ for (const checkbox of checkboxes) {
   if (task_id == "") {
     continue;
   }
-
+  
+  // Set toggle-done behavior
   const currentAddress = window.location.href;
   checkbox.addEventListener('click', function(event) {
     if (mark.classList.contains("invisible")) {
@@ -41,17 +43,30 @@ for (const edit of edits) {
   edit.addEventListener('click', function(event) {
     event.target.classList.add("hidden");
     event.target.previousElementSibling.classList.remove("hidden");
-    console.log(event.target.parentElement.parentElement.querySelector("textarea"));
+    console.log(event.target.parentElement.parentElement.querySelector("textarea").style.pointerEvents);
     event.target.parentElement.parentElement.querySelector("textarea").disabled = false;
   });
 }
 
 for (const save of saves) {
+  const list_id = save.parentElement.parentElement.getAttribute("list-id");
+  const task_id = save.parentElement.parentElement.getAttribute("task-id");
+  const currentAddress = window.location.href;
+
   save.addEventListener('click', function(event) {
     event.target.classList.add("hidden");
     event.target.nextElementSibling.classList.remove("hidden");
     event.target.parentElement.parentElement.querySelector("textarea").disabled = true;
     event.target.parentElement.parentElement.querySelector("textarea").style.backgroundColor = "var(--color-secondary)";
+
+    const new_label = event.target.parentElement.parentElement.querySelector("textarea").value;
+    let newAddress = currentAddress.substring(0, currentAddress.lastIndexOf('/'));
+    if (task_id !== "") {
+      newAddress = newAddress + `/set-label/${list_id}/${task_id}/${new_label}`;
+    } else {
+      newAddress = newAddress + `/set-label/${list_id}/${new_label}`;
+    }
+    window.location.assign(newAddress);
   });
 }
 
@@ -97,8 +112,10 @@ for (const label of labels) {
     const currentAddress = window.location.href;
 
     label.parentElement.addEventListener('click', function(event) {
-      console.log(list_id, task_id);
-      window.location.assign(currentAddress.substring(0, currentAddress.lastIndexOf('/')) + `/${list_id}`);
+      console.log(list_id, task_id, label.disabled);
+      if (label.disabled) {
+        window.location.assign(currentAddress.substring(0, currentAddress.lastIndexOf('/')) + `/${list_id}`);
+      }
     });
   }
 }
